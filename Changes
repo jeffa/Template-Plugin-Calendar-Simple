@@ -1,0 +1,12 @@
+Revision history for Perl extension Template::Plugin::Calendar::Simple.
+
+0.04  Mar 23 2013
+	- distro built with Module::Build
+    - added to github
+
+0.02  Jan 01 2004
+	- doc updates
+
+0.01  Aug 17 2003
+	- original version; created by h2xs 1.21 with options
+		-A -X Template::Plugin::Calendar::Simple
