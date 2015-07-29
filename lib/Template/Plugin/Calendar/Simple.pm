@@ -64,6 +64,19 @@ Template::Plugin::Calendar::Simple - Just another HTML calendar generator.
 
 Provides calendar delimiters for a Template Toolkit template via
 L<Calendar::Simple>. This module supplies the data, you supply the HTML.
+Defaults to current month within the current year. Past months and years
+can be specified within the Template constructor:
+
+  [% USE cal = Calendar.Simple( 5, 2000 ) %]
+
+Can generate calendars that start with Monday instead of Sunday like so:
+
+  [% USE cal = Calendar.Simple( 5, 2000, 1 ) %]
+  ...
+    [% FOREACH day = cal.days( 1 ) %]
+    ...
+
+See the unit tests for more examples.
 
 =head1 METHODS
 
