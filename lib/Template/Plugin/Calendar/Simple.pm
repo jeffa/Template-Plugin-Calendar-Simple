@@ -124,7 +124,7 @@ The Github project is L<https://github.com/jeffa/Template-Plugin-Calendar-Simple
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Spreadsheet::HTML
+    perldoc Template::Plugin::Calendar::Simple
 
 You can also look for information at:
 
