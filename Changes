@@ -1,5 +1,11 @@
 Revision history for Perl extension Template::Plugin::Calendar::Simple.
 
+0.05
+    - updated POD
+    - replace manifest with manifest skip
+    - promote readme to MD
+    - tabs to spaces
+
 0.04  Mar 23 2013
 	- distro built with Module::Build
     - added to github

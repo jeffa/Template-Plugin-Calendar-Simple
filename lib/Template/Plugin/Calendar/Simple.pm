@@ -13,25 +13,25 @@ use base qw( Template::Plugin );
 our $VERSION = '0.04';
 
 sub new {
-	my ($class, $context, @arg) = @_;
-	my @cal = Calendar::Simple::calendar(@arg);
-	return bless {
-		_CONTEXT => $context,
-		rows     => Template::Iterator->new([@cal]),
-		days     => [qw(Sun Mon Tue Wed Thu Fri Sat)],
-	}, $class;
+    my ($class, $context, @args) = @_;
+    my @cal = Calendar::Simple::calendar( @args );
+    return bless {
+        _CONTEXT => $context,
+        rows     => Template::Iterator->new( [@cal] ),
+        days     => [qw( Sun Mon Tue Wed Thu Fri Sat )],
+    }, $class;
 }
 
 sub rows {
-	my ($self) = @_;
-	return $self->{rows};
+    my ($self) = shift;
+    return $self->{rows};
 }
 
 sub days {
-	my ($self, $mon) = @_;
-	my @day = @{$self->{days}};
-	push @day, shift @day if $mon;
-	return [@day];
+    my ($self, $monday_starts_week) = @_;
+    my @days = @{ $self->{days} };
+    push @days, shift @days if $monday_starts_week;
+    return [@days];
 }
 
 1;
@@ -39,38 +39,47 @@ __END__
 
 =head1 NAME
 
-Template::Plugin::Calendar::Simple - TT plugin for Calendar::Simple
+Template::Plugin::Calendar::Simple - Just another TT plugin for Calendar::Simple
 
 =head1 SYNOPSIS
 
   [% USE cal = Calendar.Simple %]
 
   <table border="1">
-  [% FOREACH row = cal.rows %]
-     <tr>
-     [% FOREACH col = row %]
-        <td>[% col || '&nbsp;' %]</td>
-     [% END %]
-     </tr>
+    <tr>
+    [% FOREACH day = cal.days %]
+      <th>[% day %]</th>
+    [% END %]
+    </tr>
+    [% FOREACH row = cal.rows %]
+    <tr>
+    [% FOREACH col = row %]
+      <td>[% col || '&nbsp;' %]</td>
+    [% END %]
+    </tr>
   [% END %]
   </table>
 
 =head1 DESCRIPTION
 
-This is a first stab at a Calendar::Simple plugin for Template Toolkit.
+Provides calendar delimiters for a Template Toolkit template. You supply the HTML.
 
 =head1 METHODS
 
 =over 4
 
-=item B<rows>
+=item C<new()>
+
+Constructor. Will be called for you by the Template Toolkit engine.
+
+=item C<rows()>
 
    [% FOREACH row = cal.rows %]
 
 Returns a Template::Iterator which contains the calendar rows.
 Each row, however, is simply an array.
 
-=item B<days>
+=item C<days()>
 
    [% FOREACH day = cal.days %]
 
@@ -81,35 +90,98 @@ of Sunday.
 
 =back
 
-=head1 BUGS
+=head1 SEE ALSO
 
-If you have found a bug, typo, etc. please visit Best Practical Solution's
-CPAN bug tracker at http://rt.cpan.org:
+=over 4
 
-E<lt>http://rt.cpan.org/NoAuth/Bugs.html?Dist=Template-Plugin-Calendar-SimpleE<gt>
+=item * L<Template::Plugin>
 
-or send mail to E<lt>bug-Template-Plugin-Calendar-Simple#rt.cpan.orgE<gt>
+=item * L<Calendar::Simple>.
 
-(you got this far ... you can figure out how to make that
-a valid address ... and note that i won't respond to bugs
-sent to my personal address any longer)
+=back
+
+=head1 BUGS AND LIMITATIONS
+
+
+Please report any bugs or feature requests to either
+
+=over 4
+
+=item * Email: C<bug-template-plugin-calendar-simple at rt.cpan.org>
+
+=item * Web: L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Template-Plugin-Calendar-Simple>
+
+=back
+
+I will be notified, and then you'll automatically be notified of progress
+on your bug as I make changes.
+
+=head1 GITHUB
+
+The Github project is L<https://github.com/jeffa/Template-Plugin-Calendar-Simple>
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Spreadsheet::HTML
+
+You can also look for information at:
+
+=over 4
+
+=item * RT: CPAN's request tracker (report bugs here) L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Template-Plugin-Calendar-Simple>
+
+=item * AnnoCPAN: Annotated CPAN documentation L<http://annocpan.org/dist/Template-Plugin-Calendar-Simple>
+
+=item * CPAN Ratings L<http://cpanratings.perl.org/d/Template-Plugin-Calendar-Simple>
+
+=item * Search CPAN L<http://search.cpan.org/dist/Template-Plugin-Calendar-Simple>
+
+=back
 
 =head1 AUTHOR
 
-Jeff Anderson
+Jeff Anderson, C<< <jeffa at cpan.org> >>
 
-=head1 SEE ALSO
+=head1 LICENSE AND COPYRIGHT
 
-L<Template::Plugin>, L<Calendar::Simple>.
+Copyright 2015 Jeff Anderson.
 
-=head1 COPYRIGHT
+This program is free software; you can redistribute it and/or modify it
+under the terms of the the Artistic License (2.0). You may obtain a
+copy of the full license at:
 
-Copyright (c) 2004 Jeff Anderson.
+L<http://www.perlfoundation.org/artistic_license_2_0>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Any use, modification, and distribution of the Standard or Modified
+Versions is governed by this Artistic License. By using, modifying or
+distributing the Package, you accept this license. Do not use, modify,
+or distribute the Package, if you do not accept this license.
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+If your Modified Version has been derived from a Modified Version made
+by someone other than you, you are nevertheless required to ensure that
+your Modified Version complies with the requirements of this license.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+This license does not grant you the right to use any trademark, service
+mark, tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge
+patent license to make, have made, use, offer to sell, sell, import and
+otherwise transfer the Package with respect to any patent claims
+licensable by the Copyright Holder that are necessarily infringed by the
+Package. If you institute patent litigation (including a cross-claim or
+counterclaim) against any party alleging that the Package constitutes
+direct or contributory patent infringement, then this Artistic License
+to you shall terminate on the date that such litigation is filed.
+
+Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER
+AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES.
+THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY
+YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR
+CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
+CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 =cut
