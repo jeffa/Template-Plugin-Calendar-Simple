@@ -1,16 +1,13 @@
 package Template::Plugin::Calendar::Simple;
-
 use strict;
-use warnings;
+use warnings FATAL => 'all';
+our $VERSION = '0.04';
 
 use Calendar::Simple;
-
 use Template::Plugin;
 use Template::Iterator;
 use Template::Exception;
 use base qw( Template::Plugin );
-
-our $VERSION = '0.04';
 
 sub new {
     my ($class, $context, @args) = @_;
