@@ -1,6 +1,6 @@
 Template::Plugin::Calendar::Simple
 ==================================
-Just another TT plugin for Calendar::Simple
+Just another HTML calendar generator.
 
 Description
 -----------

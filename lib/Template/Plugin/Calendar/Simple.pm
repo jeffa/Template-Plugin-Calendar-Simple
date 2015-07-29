@@ -39,7 +39,7 @@ __END__
 
 =head1 NAME
 
-Template::Plugin::Calendar::Simple - Just another TT plugin for Calendar::Simple
+Template::Plugin::Calendar::Simple - Just another HTML calendar generator.
 
 =head1 SYNOPSIS
 
@@ -62,7 +62,8 @@ Template::Plugin::Calendar::Simple - Just another TT plugin for Calendar::Simple
 
 =head1 DESCRIPTION
 
-Provides calendar delimiters for a Template Toolkit template. You supply the HTML.
+Provides calendar delimiters for a Template Toolkit template via
+L<Calendar::Simple>. This module supplies the data, you supply the HTML.
 
 =head1 METHODS
 
