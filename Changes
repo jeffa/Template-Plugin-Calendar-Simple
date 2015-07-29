@@ -1,5 +1,8 @@
 Revision history for Perl extension Template::Plugin::Calendar::Simple.
 
+0.06
+    - added github metadata to Makefile
+
 0.05
     - added real tests
     - updated POD

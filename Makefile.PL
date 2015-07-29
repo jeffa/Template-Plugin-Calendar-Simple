@@ -21,6 +21,15 @@ WriteMakefile(
         'Template'         => '2.00',
         'Calendar::Simple' => '1.04',
     },
+    (! eval { ExtUtils::MakeMaker->VERSION(6.46) } ? () :
+        (META_ADD => {
+            resources => {
+                homepage   => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple',
+                repository => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple.git',
+                bugtracker => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple/issues',
+            },
+        })
+    ),
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Template-Plugin-Calendar-Simple-*' },
 );
