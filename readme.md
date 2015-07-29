@@ -4,6 +4,7 @@ Just another TT plugin for Calendar::Simple
 
 Description
 -----------
+Provides calendar delimiters for a Template Toolkit template. You supply the HTML.
 
 Synopsis
 --------
