@@ -1,6 +1,6 @@
-Template::Plugin::Calendar::Simple
-==================================
-Just another HTML calendar generator.
+Template-Plugin-Calendar-Simple
+===============================
+Just another HTML calendar generator. [![CPAN version](https://badge.fury.io/pl/Template-Plugin-Calendar-Simple.svg)](https://badge.fury.io/pl/Template-Plugin-Calendar-Simple)
 
 Description
 -----------
