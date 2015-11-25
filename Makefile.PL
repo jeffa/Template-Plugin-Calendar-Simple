@@ -26,7 +26,6 @@ WriteMakefile(
             resources => {
                 homepage   => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple',
                 repository => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple.git',
-                bugtracker => 'https://github.com/jeffa/Template-Plugin-Calendar-Simple/issues',
             },
         })
     ),
