@@ -1,7 +1,7 @@
 package Template::Plugin::Calendar::Simple;
 use strict;
 use warnings FATAL => 'all';
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 use Calendar::Simple;
 use Template::Plugin;
