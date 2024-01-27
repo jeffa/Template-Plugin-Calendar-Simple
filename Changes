@@ -1,6 +1,11 @@
 Revision history for Perl extension Template::Plugin::Calendar::Simple.
 
+1.04
+	- clean up from derusting recalling how to CPAN
+
 1.02
+    - update copyright date
+	- fix bug caused by dependecy change
 
 1.01
     - update copyright date
